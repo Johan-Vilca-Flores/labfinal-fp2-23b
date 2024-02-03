@@ -1,11 +1,9 @@
 public class Caballero extends Soldado {
     //Atributos de la clase
-
     private boolean usaEspada;
     private boolean estaMontando;
     private String tag;
     // Métodos mutadores
-
     public void atacar(Soldado objetivo) {
         int daño = this.getAtaque();
     
@@ -16,7 +14,6 @@ public class Caballero extends Soldado {
         objetivo.recibirDaño(daño);
     }
     
-
     public void setUsaEspada(boolean usa){
         usaEspada=usa;
     }
@@ -55,7 +52,7 @@ public class Caballero extends Soldado {
         return tag;
     }
 
-    //Otros métodos
+    // métodos
     public void montar(){
         if(!estaMontando){
             estaMontando=true;
