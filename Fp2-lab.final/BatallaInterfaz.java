@@ -11,17 +11,17 @@ public class BatallaInterfaz extends Lab22 {
             ejercito1.ordenarEjercito();
             ejercito2.ordenarEjercito();
 
-            JOptionPane.showMessageDialog(null, "Estadísticas iniciales:\n\n" +
+            JOptionPane.showMessageDialog(null, "Estadísticas :\n\n" +
                     "Ejército 1 con " + Ejercito.totalSoldados1 + " soldados.\n" +
                     "Ejército 2 con " + Ejercito.totalSoldados2 + " soldados.");
 
             // Lógica de la batalla
             while ((Ejercito.totalSoldados1 != 0) && (Ejercito.totalSoldados2 != 0)) {
                 JOptionPane.showMessageDialog(null,
-                        "Soldados activos del ejercito 1: " + Ejercito.totalSoldados1 + "\n" +
-                                "Soldados activos del ejercito 2: " + Ejercito.totalSoldados2);
+                        "Soldados activos, Ejercito 1: " + Ejercito.totalSoldados1 + "\n" +
+                                "Soldados activos, Ejercito 2: " + Ejercito.totalSoldados2);
 
-                // Lógica del turno de batalla
+                // Logica para el turno de batalla
                 turnoBatalla(mapa.tableroSoldados, true);
                 Soldado.imprimirTablero(mapa.tableroSoldados);
 
@@ -34,19 +34,19 @@ public class BatallaInterfaz extends Lab22 {
             }
 
             if (Ejercito.totalSoldados1 == 0) {
-                JOptionPane.showMessageDialog(null, "Gana el jugador 2. El ejército 1 ha sido eliminado");
+                JOptionPane.showMessageDialog(null, "El ganador es el jugador: 2. Lastimosamente el ejército 1 fue derrotado");
             } else {
-                JOptionPane.showMessageDialog(null, "Gana el jugador 1. El ejército 2 ha sido eliminado");
+                JOptionPane.showMessageDialog(null, "El ganador es eljugador: 1. El ejército 2 fue derrotado");
             }
 
             // Estadísticas finales
             JOptionPane.showMessageDialog(null,
                     "Estadísticas finales:\n\n" +
-                            "Ejército 1 con " + Ejercito.totalSoldados1 + " soldados activos.\n" +
-                            "Ejército 2 con " + Ejercito.totalSoldados2 + " soldados activos.");
+                            "Ejército 1 tiene " + Ejercito.totalSoldados1 + " activos.\n" +
+                            "Ejército 2 tiene " + Ejercito.totalSoldados2 + " activos.");
 
-            // Pregunta para generar otra batalla
-            String control = JOptionPane.showInputDialog("¿Desea generar otra batalla? (s/n)").toLowerCase();
+            // consulta para generar una nueva tabla
+            String control = JOptionPane.showInputDialog("¿Le gustaria generar una nueva tabla? (s/n)").toLowerCase();
             if (control.equals("n")) {
                 break;
             }
