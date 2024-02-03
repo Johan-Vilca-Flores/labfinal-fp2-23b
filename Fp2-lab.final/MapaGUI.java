@@ -57,13 +57,15 @@ public class MapaGUI extends JFrame {
         setLayout(new BorderLayout());
 
         // Actividades interfaz
-        JPanel panelEtiquetas = new JPanel(new GridLayout(4, 1)); // Panel para contener las dos etiquetas
-        etiquetaActividad = new JLabel("Bienvenidos al juego");
+        JPanel panelEtiquetas = new JPanel(new GridLayout(4, 1)); 
+        // Panel para contener las dos etiquetas
+        etiquetaActividad = new JLabel("Bienvenido, gracias por venir al juego ");
         etiquetaActividad.setHorizontalAlignment(JLabel.CENTER);
         panelEtiquetas.add(etiquetaActividad);
         // Turno interfaz
-        jugadorActual = Math.random() < 0.5; // Determinar al jugador inicial 50%
-        etiquetaTurno = new JLabel("Turno del " + (jugadorActual ? "Jugador 1" : "Jugador 2"));
+        jugadorActual = Math.random() < 0.5; 
+        // Determinar al jugador inicial 50%
+        etiquetaTurno = new JLabel("Turno del " + (jugadorActual ? "Jugador A" : "Jugador B"));
         etiquetaTurno.setHorizontalAlignment(JLabel.CENTER);
         panelEtiquetas.add(etiquetaTurno);
         // Soldad Interfaz
@@ -77,21 +79,25 @@ public class MapaGUI extends JFrame {
         panelEtiquetas.add(botonMontarDesmontar);
 
         panelEtiquetas.setForeground(Color.BLACK);
-        add(panelEtiquetas, BorderLayout.NORTH); // Añade el panel de etiquetas en la parte superior
+        add(panelEtiquetas, BorderLayout.NORTH);
+        // Añade el panel de etiquetas en la parte superior
 
         // Escoger Reino
-        String reino1 = elegirReino("Jugador 1");
-        String reino2 = elegirReino("Jugador 2");
+        String reino1 = elegirReino("Jugador A");
+        String reino2 = elegirReino("Jugador B");
         iniciarPartida(reino1, reino2);
         setMinimumSize(new Dimension(700, 700));
-        add(panelEtiquetas, BorderLayout.NORTH); // Añade el panel de etiquetas en la parte superior
+        add(panelEtiquetas, BorderLayout.NORTH);
+        // Añade el panel de etiquetas en la parte superior
 
-        System.out.println("El jugador inicial es: " + (jugadorActual ? "Jugador 1" : "Jugador 2"));
+        System.out.println("El jugador inicial es: " + (jugadorActual ? "Jugador A" : "Jugador B"));
         JPanel gridPanel = new JPanel(new GridLayout(NUM_FILAS, NUM_COLUMNAS));
         inicializarTablero(gridPanel);
-        add(gridPanel, BorderLayout.CENTER); // Añade el panel de la cuadrícula en el centro
+        add(gridPanel, BorderLayout.CENTER); 
+        // Añade el panel de la cuadrícula en el centro
         crearPanelBotones();
-        add(panelBotones, BorderLayout.SOUTH); // Añade el panel de botones al sur
+        add(panelBotones, BorderLayout.SOUTH);
+        // Añade el panel de botones al sur
         pack(); // Ajusta el tamaño del JFrame basado en sus componentes
         setVisible(true);
     }
@@ -100,17 +106,18 @@ public class MapaGUI extends JFrame {
         if (soldadoActual instanceof Caballero) {
             Caballero caballero = (Caballero) soldadoActual;
             boolean estadoMontadoActual = caballero.getMontando();
-            caballero.setMontando(!estadoMontadoActual); // Cambia el estado
+            caballero.setMontando(!estadoMontadoActual);
+            // Cambia el estado
     
             // Actualizar el estado en el tablero de soldados
             tableroSoldados[filaSeleccionada][columnaSeleccionada] = caballero;
     
             if (!estadoMontadoActual) {
-                etiquetaActividad.setText("El caballero " + caballero.getNombre() + " ha montado su caballo! +2 ataque");
+                etiquetaActividad.setText("El caballero " + caballero.getNombre() + " montado su caballo! +2 ataque");
                 botonMontarDesmontar.setText("Desmontar");
                 caballero.setAtaque(caballero.getAtaque() + 2); // Aumenta ataque al montar
             } else {
-                etiquetaActividad.setText("El caballero " + caballero.getNombre() + " ha desmontado su caballo! -2 ataque");
+                etiquetaActividad.setText("El caballero " + caballero.getNombre() + " desmonto su caballo! -2 ataque");
                 botonMontarDesmontar.setText("Montar");
                 caballero.setAtaque(caballero.getAtaque() - 2); // Disminuye ataque al desmontar
             }
@@ -120,7 +127,7 @@ public class MapaGUI extends JFrame {
                                              ", Vida: " + caballero.getVida() +
                                              ", Defensa: " + caballero.getDefensa() +
                                              ", Ataque: " + caballero.getAtaque() +
-                                             ", Montado: " + (caballero.getMontando() ? "Está montado" : "No está montado");
+                                             ", Montado: " + (caballero.getMontando() ? " montado" : "No está montado");
                         infoSoldadoLabel.setText(infoSoldado);
         }
     }
@@ -141,7 +148,7 @@ public class MapaGUI extends JFrame {
 
     private void cambiarTurno() {
         jugadorActual = !jugadorActual;
-        etiquetaTurno.setText("Turno del " + (jugadorActual ? "Jugador 1" : "Jugador 2"));
+        etiquetaTurno.setText("Turno del " + (jugadorActual ? "Jugador A" : "Jugador B"));
     }
 
     private void crearPanelBotones() {
@@ -150,17 +157,17 @@ public class MapaGUI extends JFrame {
         JButton botonGuardar = new JButton("Guardar");
         botonGuardar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                boolean guardado1 = guardarEjercito(ejercito1, "ejercito1");
-                boolean guardado2 = guardarEjercito(ejercito2, "ejercito2");
+                boolean guardado1 = guardarEjercito(ejercito1, "ejercitoA");
+                boolean guardado2 = guardarEjercito(ejercito2, "ejercitoB");
 
                 if (guardado1 && guardado2) {
-                    JOptionPane.showMessageDialog(null, "Ambos ejércitos han sido guardados con éxito.");
+                    JOptionPane.showMessageDialog(null, "se guardo ambos ejercitos .");
                 } else {
-                    String mensajeError = "No se pudieron guardar los ejércitos:";
+                    String mensajeError = "no fue posible guardar los ejercitos:";
                     if (!guardado1)
-                        mensajeError += "\n- Ejército 1";
+                        mensajeError += "\n- Ejército A";
                     if (!guardado2)
-                        mensajeError += "\n- Ejército 2";
+                        mensajeError += "\n- Ejército b";
                     JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
@@ -169,8 +176,8 @@ public class MapaGUI extends JFrame {
         JButton botonCargar = new JButton("Cargar");
         botonCargar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Ejercito ejercitoCargado1 = cargarEjercito("ejercito1");
-                Ejercito ejercitoCargado2 = cargarEjercito("ejercito2");
+                Ejercito ejercitoCargado1 = cargarEjercito("ejercitoA");
+                Ejercito ejercitoCargado2 = cargarEjercito("ejercitoB");
 
                 if (ejercitoCargado1 != null && ejercitoCargado2 != null) {
                     ejercito1 = ejercitoCargado1;
@@ -189,11 +196,11 @@ public class MapaGUI extends JFrame {
                     actualizarMapa();
 
                     // Mensaje de éxito
-                    JOptionPane.showMessageDialog(null, "Los ejércitos han sido cargados con éxito.", "Carga Exitosa",
+                    JOptionPane.showMessageDialog(null, "sse guardo con exito.", "Carga Exitosa",
                             JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     // Mensaje de error
-                    JOptionPane.showMessageDialog(null, "Error al cargar los ejércitos.", "Error de Carga",
+                    JOptionPane.showMessageDialog(null, " error para cargar Ejercito.", "Error de Carga",
                             JOptionPane.ERROR_MESSAGE);
                 }
             }
@@ -352,7 +359,7 @@ public class MapaGUI extends JFrame {
                                              ", Vida: " + caballero.getVida() +
                                              ", Defensa: " + caballero.getDefensa() +
                                              ", Ataque: " + caballero.getAtaque() +
-                                             ", Montado: " + (caballero.getMontando() ? "Está montado" : "No está montado");
+                                             ", Montado: " + (caballero.getMontando() ? "  montado" : "No está montado");
                         infoSoldadoLabel.setText(infoSoldado);
                     }
                 }
@@ -408,7 +415,7 @@ public class MapaGUI extends JFrame {
                 if (tableroSoldados[fila][columna] != null
                         && tableroSoldados[fila][columna].getEjercito() == jugadorActual) {
                     // Seleccionar otro soldado del mismo ejército
-                    etiquetaActividad.setText("¡No puedes pelear con tu propio ejército!");
+                    etiquetaActividad.setText("¡error, es de tu propio Ejercito!");
                     botonesMapa[filaSeleccionada][columnaSeleccionada]
                             .setBorder(BorderFactory.createLineBorder(Color.BLACK));
                     soldadoSeleccionado = false;
@@ -440,7 +447,7 @@ public class MapaGUI extends JFrame {
             tableroSoldados[filaDestino][colDestino] = tableroSoldados[filaOrigen][colOrigen];
             tableroSoldados[filaOrigen][colOrigen] = null;
             actualizarMapa();
-            etiquetaActividad.setText("Moviste a " + soldadoActual.getNombre() + " a una nueva posición.");
+            etiquetaActividad.setText("Moviste a " + soldadoActual.getNombre() + " nueva posicion.");
             cambiarTurno();
         } else if (Math.abs(distanciaFila) <= rangoAtaque && Math.abs(distanciaColumna) <= rangoAtaque
                 && tableroSoldados[filaDestino][colDestino] != null
@@ -476,7 +483,7 @@ public class MapaGUI extends JFrame {
         int soldadosJugador2 = contarSoldados(false);
 
         if (soldadosJugador1 == 0 || soldadosJugador2 == 0) {
-            String ganador = soldadosJugador1 > 0 ? "Jugador 1" : "Jugador 2";
+            String ganador = soldadosJugador1 > 0 ? "Jugador A" : "Jugador B";
             JOptionPane.showMessageDialog(this, "Fin del juego. Ganó " + ganador);
             // Aquí puedes agregar lógica para terminar o reiniciar el juego
         }
