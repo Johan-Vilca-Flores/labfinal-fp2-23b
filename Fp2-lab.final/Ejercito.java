@@ -12,15 +12,15 @@ public class Ejercito implements Serializable {
     private String reino;
     //datos generales
     public static int totalEjercitos;
-    public static int totalEjercitos1;
-    public static int totalEjercitos2;  
+    public static int totalEjercitosA;
+    public static int totalEjercitosB;  
     public static final int maxEjercitos=3;
     public static int totalSoldados;
-    public static int totalSoldados1;
-    public static int totalSoldados2;  
+    public static int totalSoldadosA;
+    public static int totalSoldadosB;  
     public static final int maxSoldados=10;
-    public static String datoReino1;
-    public static String datoReino2;
+    public static String datoReinoA;
+    public static String datoReinoB;
 
 
     //Métodos modificadores
@@ -31,14 +31,14 @@ public class Ejercito implements Serializable {
         player=player12;
         int numDeEjercito;
         if(player){
-            numSoldados=totalSoldados1;
+            numSoldados=totalSoldadosA;
             numDeEjercito=1;
-            reino=datoReino1;
+            reino=datoReinoA;
         }
         else{
-            numSoldados=totalSoldados2;
+            numSoldados=totalSoldadosB;
             numDeEjercito=2;
-            reino=datoReino2;
+            reino=datoReinoB;
         }
         for(int i=0;i<numSoldados;i++){
             int numRandom=(((int) (Math.random() * 4)) + 1);
@@ -61,8 +61,8 @@ public class Ejercito implements Serializable {
         sumarVidas();
     }
     public static void setReinos(String reino1, String reino2){
-        datoReino1=reino1;
-        datoReino2=reino2;        
+        datoReinoA=reinoA;
+        datoReinoB=reinoB;        
     }
    
     public void setFila(int f) {
