@@ -17,7 +17,7 @@ public class Atajos {
         Scanner scan=new Scanner(System.in);
         int i;
         do{
-            System.out.println("Eliga uno de los opciones a continuación, ingrese el número entre 1 y "+listaOpciones.length+" según corresponda:");
+            System.out.println("seleciones una de las alternativas, ingresando 1 y "+listaOpciones.length+" según corresponda:");
             for(int j=0;j<listaOpciones.length;j++){
                 System.out.println((j+1)+". "+listaOpciones[j]);
             }
