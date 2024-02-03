@@ -22,10 +22,9 @@ public class Espadachin extends Soldado {
             longEspada = 130;
         }
 
-        // Considerar la longitud de la espada para aumentar el daño
+        // Calcula el tamaño de la espada
         dañoAdicional += calcularDañoPorLongitudEspada(longEspada);
-
-        // Aplicar el daño total al objetivo
+        // Aplicar el daño  de la espada
         int dañoTotal = dañoBase + dañoAdicional;
         this.setAtaque(dañoTotal);
         objetivo.recibirDaño(this.getAtaque());
@@ -42,7 +41,6 @@ public class Espadachin extends Soldado {
     }
 
     // Métodos mutadores
-
     public void setLongEspada(int newL){
         longEspada=newL;
     }
@@ -54,7 +52,7 @@ public class Espadachin extends Soldado {
         if(this.getVida()>=9){
             this.setEsEspecial(true);
             if(this.getReino().equals("Castilla Aragón ")){
-                this.setNombre("Espadachin Conquistador");
+                this.setNombre("Espadachin conquist..");
                 this.setVida(14);
                 this.esConquistador=true;
                 this.tag="EC";
