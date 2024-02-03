@@ -42,7 +42,7 @@ public class Atajos {
         String[] letras = {" ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
         return letras[numero];
     }
-    //intercambiar soldados
+    //intercambio de soldados
     public static void intercambiar(ArrayList<Soldado>soldados, int i, int j) {
         Soldado temp = new Soldado();
         temp = soldados.get(i);
@@ -53,7 +53,7 @@ public class Atajos {
     public static int fila() {
         Scanner scan = new Scanner(System.in);
         try {
-            System.out.println("Ingrese la fila:");
+            System.out.println("digite la fila:");
             return scan.nextInt();
         } catch (Exception e) {
             return fila();
@@ -63,7 +63,7 @@ public class Atajos {
     //columna
     public static int columna() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Ingrese la columna:");
+        System.out.println("digite la columna:");
         return convertir(scan.next());
     }
     
